@@ -1,4 +1,7 @@
+"use client" 
+
 import React from 'react'
+import { motion } from 'framer-motion'
 import imgDigital from './../../public/assets/DigitalImage.jpg'
 import { FaBullhorn, FaCheck, FaCode, FaHandshake } from 'react-icons/fa'
 import Image from 'next/image'
@@ -8,10 +11,18 @@ const About = () => {
         <>
             <div className='py-20' id='about'>
                 <div className='flex flex-col lg:flex-row gap-16 justify-between items-center mx-auto'>
-                    <div className="relative w-auto lg:w-3xl h-auto">
+                    
+                    {/* Left Column (Image) - Animates when in view */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }} // Ensures animation runs every time it's in view
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="relative w-auto lg:w-3xl h-auto"
+                    >
                         {/* Gambar */}
                         <Image src={imgDigital} loading='lazy'
-                            alt="Lewyin Dev - Jasa pembuatan website profesional oleh Lewyin Dev"
+                            alt="Brandy Digital Creative - About Us"
                             className="w-full h-auto lg:h-[480px] rounded-2xl object-cover" />
 
                         {/* Overlay dengan teks */}
@@ -24,8 +35,16 @@ const About = () => {
                                 <p className="text-sm lg:text-base text-gray-700">Inovasi Digital Untuk bisnis anda.</p>
                             </div>
                         </div>
-                    </div>
-                    <div className='flex flex-col justify-center items-start w-auto lg:w-3xl'>
+                    </motion.div>
+
+                    {/* Right Column (Text) - Animates when in view */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }} // Ensures animation runs every time it's in view
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className='flex flex-col justify-center items-start w-auto lg:w-3xl'
+                    >
                         {/* Label */}
                         <span className=" text-blue-600 text-xs lg:text-base font-medium">
                             Tentang Kami
@@ -38,8 +57,8 @@ const About = () => {
 
                         {/* Deskripsi */}
                         <p className="text-gray-400 text-base lg:text-lg mt-4">
-                            <span className='font-bold'>Brandy</span> lahir dari keyakinan bahwa setiap bisnis, berapapun skalanya, berhak memiliki citra digital yang kuat dan profesional. 
-                            Kami bukan sekadar penyedia jasa, tapi <span className='font-bold'>partner strategis</span> Anda dalam menavigasi dunia digital. Tim kami berdedikasi untuk memahami 
+                            <span className='font-bold'>Brandy</span> lahir dari keyakinan bahwa setiap bisnis, berapapun skalanya, berhak memiliki citra digital yang kuat dan profesional.
+                            Kami bukan sekadar penyedia jasa, tapi <span className='font-bold'>partner strategis</span> Anda dalam menavigasi dunia digital. Tim kami berdedikasi untuk memahami
                             visi Anda dan mengubahnya menjadi hasil nyata yang meningkatkan visibilitas dan kredibilitas brand Anda.
                         </p>
 
@@ -85,7 +104,7 @@ const About = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from 'next/link';
 import { FaCheckCircle, FaArrowRight, FaSchool, FaBuilding, FaStore } from "react-icons/fa";
+import { motion } from "framer-motion"; // Import motion from Framer Motion
 
 const pricingPlans = [
     {
@@ -154,8 +155,14 @@ export default function PaketLayanan() {
     return (
         <section className="py-16" id="price">
             <div className="container mx-auto">
-                {/* Header */}
-                <div className="mx-auto max-w-xl text-center">
+                {/* Header - Animates from the top */}
+                <motion.div
+                    initial={{ opacity: 0, y: -100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="mx-auto max-w-xl text-center"
+                >
                     <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full">
                         Harga Terbaik
                     </span>
@@ -165,36 +172,49 @@ export default function PaketLayanan() {
                     <p className="mt-4 text-lg text-gray-400">
                         Pilih paket yang paling sesuai dengan target dan anggaran Anda. Kami siap membantu Anda bertumbuh.
                     </p>
-                </div>
+                </motion.div>
 
-                {/* Tombol Kategori */}
-                <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <CategoryButton 
-                        label="Untuk UMKM" 
-                        icon={<FaStore />}
-                        active={category === 'umkm'} 
-                        onClick={() => setCategory('umkm')} 
-                    />
-                    <CategoryButton 
-                        label="Untuk Perusahaan" 
-                        icon={<FaBuilding />}
-                        active={category === 'company'} 
-                        onClick={() => setCategory('company')} 
-                    />
-                    <CategoryButton 
-                        label="Untuk Sekolah" 
-                        icon={<FaSchool />}
-                        active={category === 'school'} 
-                        onClick={() => setCategory('school')} 
-                    />
-                </div>
+                {/* Content (Buttons & Cards) - Animates from the bottom */}
+                <motion.div
+                    initial={{ opacity: 0, y: -100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
+                >
+                    {/* Tombol Kategori */}
+                    <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <CategoryButton 
+                            label="Untuk UMKM" 
+                            icon={<FaStore />}
+                            active={category === 'umkm'} 
+                            onClick={() => setCategory('umkm')} 
+                        />
+                        <CategoryButton 
+                            label="Untuk Perusahaan" 
+                            icon={<FaBuilding />}
+                            active={category === 'company'} 
+                            onClick={() => setCategory('company')} 
+                        />
+                        <CategoryButton 
+                            label="Untuk Sekolah" 
+                            icon={<FaSchool />}
+                            active={category === 'school'} 
+                            onClick={() => setCategory('school')} 
+                        />
+                    </div>
 
-                {/* Daftar Harga */}
-                <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-                    {filteredPlans.map((plan, index) => (
-                        <PricingCard key={index} plan={plan} />
-                    ))}
-                </div>
+                    {/* Daftar Harga */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 100 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8, ease: "easeInOut", delay: 0.5 }}
+                        className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+                        {filteredPlans.map((plan, index) => (
+                            <PricingCard key={index} plan={plan} />
+                        ))}
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );

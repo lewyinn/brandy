@@ -3,11 +3,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaWhatsapp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function CTA() {
     return (
         <section className="py-16">
-            <div className="mx-auto container">
+            <motion.div 
+                initial={{ opacity: 0, y: -100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="mx-auto container">
                 <div className="rounded-2xl bg-blue-800 p-8 shadow-lg sm:p-12 lg:p-16">
                     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
                         <div className="text-center lg:text-left">
@@ -31,7 +37,7 @@ export default function CTA() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

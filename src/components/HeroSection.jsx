@@ -7,13 +7,19 @@ import { FaCheck, FaDrawPolygon, FaLock, FaRocketchat } from 'react-icons/fa'
 import { Link as LinkScroll } from 'react-scroll';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion'; // Import motion from Framer Motion
 
 const Hero = () => {
     return (
         <>
             <div className='py-20 lg:py-48' id='home'>
                 <div className='flex flex-col lg:flex-row gap-6 justify-between items-center mx-auto'>
-                    <div className='flex flex-col justify-center items-start w-auto lg:w-3xl'>
+
+                    <motion.div 
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className='flex flex-col justify-center items-start w-auto lg:w-3xl'>
 
                         {/* Logo & Judul */}
                         <div className="flex gap-3 items-center">
@@ -33,7 +39,7 @@ const Hero = () => {
 
                         {/* Deskripsi */}
                         <p className="text-gray-400 text-base lg:text-lg mt-4">
-                            Solusi digital kreatif untuk pertumbuhan bisnis dan brand Anda. 
+                            Solusi digital kreatif untuk pertumbuhan bisnis dan brand Anda.
                             Brandy bantu UMKM, Perusahaan & Sekolah lebih dikenal secara online, profesional, & terpercaya.
                         </p>
 
@@ -79,9 +85,14 @@ const Hero = () => {
                                 <p className="text-gray-400 font-light text-base lg:text-lg">Kualitas Terbaik</p>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="relative w-auto lg:w-3xl h-auto">
+                    <motion.div 
+                        initial={{ opacity: 0, x: 100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="relative w-auto lg:w-3xl h-auto"
+                    >
                         {/* Gambar */}
                         <Image src={imgHero} loading='lazy'
                             alt="Lewyin Dev - Jasa pembuatan website profesional oleh Lewyin Dev"
@@ -97,7 +108,7 @@ const Hero = () => {
                                 <p className="text-sm lg:text-base text-gray-700">Website modern, desain kreatif.</p>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </>

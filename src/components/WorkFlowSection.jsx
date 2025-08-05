@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from 'framer-motion';
 import React from 'react';
 import { 
     PiPresentationChartLight, 
@@ -81,7 +82,12 @@ export default function WorkFlow() {
         <section className='py-16' id="alurkerja">
             <div className="mx-auto container">
                 {/* Header Section */}
-                <div className="mx-auto max-w-xl text-center">
+                <motion.div 
+                    initial={{ opacity: 0, y: -100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="mx-auto max-w-xl text-center">
                     <span className="bg-blue-500/10 text-blue-400 text-sm font-medium px-3 py-1.5 rounded-full">
                         Proses Kami
                     </span>
@@ -91,14 +97,19 @@ export default function WorkFlow() {
                     <p className="mt-4 text-lg text-gray-400">
                         Setiap proyek kami jalankan melalui tahapan yang jelas untuk memastikan hasil terbaik dan kepuasan klien.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Timeline */}
-                <div className="mt-16 flex flex-col bg-blue-400/10 p-3 py-5 rounded-2xl">
+                <motion.div 
+                    initial={{ opacity: 0, y: 100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
+                    className="mt-16 flex flex-col bg-blue-400/10 p-3 py-5 rounded-2xl">
                     {workflowSteps.map((step, index) => (
                         <WorkflowCard key={index} step={step} index={index} />
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

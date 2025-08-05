@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaLink, FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { motion } from "framer-motion"; // Import motion from Framer Motion
 
 const portfolioData = [
     {
@@ -120,7 +121,12 @@ export default function Portfolio() {
         <section className='py-16' id="portfolio">
             <div className="container mx-auto">
                 {/* Header Section */}
-                <div className="mx-auto max-w-xl text-center">
+                <motion.div 
+                    initial={{ opacity: 0, y: -100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="mx-auto max-w-xl text-center">
                     <span className="bg-blue-500/10 text-blue-400 text-sm font-medium px-3 py-1.5 rounded-full">
                         Portofolio Kami
                     </span>
@@ -130,10 +136,15 @@ export default function Portfolio() {
                     <p className="mt-4 text-lg text-gray-400">
                         Lihat bagaimana kami membantu klien mencapai tujuan mereka melalui desain yang fungsional dan promosi yang efektif.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Filter Buttons */}
-                <div className="mt-12 flex justify-center flex-wrap gap-3">
+                <motion.div 
+                    initial={{ opacity: 0, y: -100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
+                    className="mt-12 flex justify-center flex-wrap gap-3">
                     {categories.map(category => (
                         <FilterButton
                             key={category}
@@ -142,18 +153,28 @@ export default function Portfolio() {
                             onClick={() => handleFilterChange(category)}
                         />
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Projects Grid */}
-                <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <motion.div 
+                    initial={{ opacity: 0, y: 100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut", delay: 0.4 }}
+                    className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {visibleProjects.map((project, index) => (
                         <PortfolioCard key={index} project={project} />
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Tombol Lihat Lebih Banyak / Sedikit */}
                 {allFilteredProjects.length > 3 && (
-                    <div className="mt-12 text-center">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 100 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8, ease: "easeInOut", delay: 0.5 }}
+                        className="mt-12 text-center">
                         <button
                             onClick={() => setShowAll(!showAll)}
                             className="inline-flex items-center gap-2 rounded-lg bg-gray-700 px-6 py-3 text-center text-base font-semibold text-white transition hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
@@ -161,7 +182,7 @@ export default function Portfolio() {
                             {showAll ? 'Tampilkan Lebih Sedikit' : 'Lihat Lebih Banyak'}
                             {showAll ? <FaArrowUp /> : <FaArrowDown />}
                         </button>
-                    </div>
+                    </motion.div>
                 )}
             </div>
         </section>

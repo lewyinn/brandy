@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { PiPlusBold, PiMinusBold } from 'react-icons/pi';
 import { FaLaptopCode, FaInstagram } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const faqData = {
     website: [
@@ -77,7 +78,12 @@ export default function FAQ() {
         <section className="py-16" id="faq">
             <div className="mx-auto container">
                 {/* Header Section */}
-                <div className="mx-auto max-w-xl text-center">
+                <motion.div 
+                    initial={{ opacity: 0, y: -100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="mx-auto max-w-xl text-center">
                     <span className="bg-blue-500/10 text-blue-400 text-sm font-medium px-3 py-1.5 rounded-full">
                         Butuh Bantuan?
                     </span>
@@ -87,10 +93,15 @@ export default function FAQ() {
                     <p className="mt-4 text-lg text-gray-400">
                         Tidak menemukan jawaban yang Anda cari? Jangan ragu untuk menghubungi kami secara langsung.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Grid untuk kategori FAQ */}
-                <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
+                <motion.div 
+                    initial={{ opacity: 0, y: 100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="mt-16 grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
                     {/* Kolom Pembuatan Website */}
                     <div className="flex flex-col">
                         <div className="mb-6 flex items-center gap-4">
@@ -116,7 +127,7 @@ export default function FAQ() {
                             ))}
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
