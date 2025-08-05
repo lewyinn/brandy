@@ -11,7 +11,7 @@ import Footer from "@/components/FooterComponent";
 export default function Home() {
   return (
     <>
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-8 overflow-x-hidden">
         <Navbar />
         <Hero />
         <About />

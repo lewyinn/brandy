@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
 import { Link as LinkScroll } from "react-scroll";
 import Link from 'next/link'; 
-import logoImage from './../../public/assets/hero.jpg'; 
+import logoImage from './../../public/assets/Logo.png'; 
 import { FiMail } from 'react-icons/fi';
 
 export default function Footer() {
